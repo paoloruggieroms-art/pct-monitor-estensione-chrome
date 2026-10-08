@@ -1,0 +1,23 @@
+{
+    "manifest_version": 3,
+    "name": "Monitor PCT v2.4",
+    "version": "2.4.7",
+    "version_name": "2.4.7",
+    "description": "Cattura cookies SIGIT e sincronizza documenti su Aruba (sincronizzafascicolo.it)",
+    "permissions": ["cookies", "webNavigation", "declarativeNetRequest", "storage", "scripting"],
+    "host_permissions": [
+        "https://*.finanze.it/*",
+        "https://www.sincronizzafascicolo.it/*"
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.sincronizzafascicolo.it/wp-content/monitor/*", "https://www.sincronizzafascicolo.it/wp-admin/*"],
+            "js": ["content_aruba_tutti.js"],
+            "run_at": "document_end",
+            "all_frames": true
+        }
+    ]
+}
