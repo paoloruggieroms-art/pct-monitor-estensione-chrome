@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PCT Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="popup-header">
+        <img src="icon128.png" alt="PCT Monitor" width="28" height="28" style="border-radius: 4px;" onerror="this.style.display='none'">
+        <span class="popup-title">PCT Monitor</span>
+        <button id="btn-open-settings" title="Impostazioni" style="margin-left:auto;background:none;border:none;color:inherit;font-size:16px;cursor:pointer;line-height:1;">&#9881;</button>
+    </div>
+
+    <div class="popup-body">
+
+        <!-- Stato pagina corrente -->
+        <div id="page-status" class="status-box status-idle">
+            <span id="page-status-icon">&#9679;</span>
+            <span id="page-status-text">Apri un fascicolo sul PdA Toscana</span>
+        </div>
+
+        <!-- Info fascicolo rilevato -->
+        <div id="fascicolo-info" class="fascicolo-info hidden">
+            <div class="info-row">
+                <span class="info-label">Fascicolo:</span>
+                <span id="info-numero" class="info-value">—</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Oggetto:</span>
+                <span id="info-oggetto" class="info-value">—</span>
+            </div>
+        </div>
+
+        <!-- Pulsante sincronizza -->
+        <button id="btn-sync" class="btn btn-primary" disabled>
+            Sincronizza fascicolo corrente
+        </button>
+
+        <!-- Barra progresso -->
+        <div id="progress-area" class="hidden">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+            </div>
+            <div id="progress-label" class="progress-label">Avvio...</div>
+        </div>
+
+        <!-- Risultato ultima sync -->
+        <div id="sync-result" class="hidden"></div>
+
+        <!-- Ultima sincronizzazione -->
+        <div id="last-sync-info" class="last-sync hidden">
+            <span id="last-sync-text"></span>
+        </div>
+
+    </div>
+
+    <div class="popup-footer">
+        <a href="http://localhost/pct/index.php" target="_blank" class="footer-link">Apri Dashboard</a>
+    </div>
+
+    <!-- Pannello impostazioni (nascosto di default) -->
+    <div id="settings-panel" class="settings-panel hidden">
+        <div class="settings-title">Impostazioni</div>
+        <label class="settings-label">URL Backend
+            <input type="text" id="setting-backend-url" class="settings-input" placeholder="https://sincpdatoscana.it/wp-content/monitor/api_sync.php">
+        </label>
+        <label class="settings-label">API Token
+            <input type="text" id="setting-api-token" class="settings-input" placeholder="pct_aruba_2026_...">
+        </label>
+        <button id="btn-save-settings" class="btn btn-primary">Salva</button>
+        <button id="btn-close-settings" class="btn btn-ghost">Chiudi</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

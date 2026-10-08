@@ -1,0 +1,267 @@
+/* PCT Monitor - Popup Styles */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 13px;
+    color: #333;
+    background: #f4f6f9;
+    width: 320px;
+    min-height: 160px;
+}
+
+/* ─── Header ─────────────────────────────────────────────────────────────── */
+.popup-header {
+    background: #1a3a5c;
+    color: #fff;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.popup-title {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .3px;
+}
+
+/* ─── Body ───────────────────────────────────────────────────────────────── */
+.popup-body {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ─── Status box ─────────────────────────────────────────────────────────── */
+.status-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.status-idle {
+    background: #e9ecef;
+    color: #6c757d;
+}
+
+.status-detected {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+.status-error {
+    background: #f8d7da;
+    color: #842029;
+}
+
+#page-status-icon {
+    font-size: 10px;
+}
+
+/* ─── Info fascicolo ─────────────────────────────────────────────────────── */
+.fascicolo-info {
+    background: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 5px;
+    padding: 8px 10px;
+}
+
+.info-row {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 3px;
+    font-size: 12px;
+}
+
+.info-row:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    color: #888;
+    min-width: 60px;
+    flex-shrink: 0;
+}
+
+.info-value {
+    font-weight: 500;
+    color: #1a3a5c;
+    word-break: break-word;
+}
+
+/* ─── Pulsanti ───────────────────────────────────────────────────────────── */
+.btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background .15s, opacity .15s;
+    text-align: center;
+}
+
+.btn:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: #1a3a5c;
+    color: #fff;
+    width: 100%;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #254e7a;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: #fff;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: #5a6268;
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #6c757d;
+    border: 1px solid #dee2e6;
+    width: 100%;
+    margin-top: 4px;
+}
+
+.btn-ghost:hover {
+    background: #f8f9fa;
+}
+
+/* ─── Progress bar ───────────────────────────────────────────────────────── */
+.progress-bar {
+    height: 6px;
+    background: #dee2e6;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #1a3a5c;
+    border-radius: 3px;
+    transition: width .3s ease;
+}
+
+.progress-label {
+    font-size: 11px;
+    color: #888;
+    margin-top: 4px;
+    text-align: center;
+}
+
+/* ─── Risultato sync ─────────────────────────────────────────────────────── */
+.sync-result {
+    padding: 8px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.sync-result-success {
+    background: #d1e7dd;
+    color: #0a3622;
+}
+
+.sync-result-error {
+    background: #f8d7da;
+    color: #842029;
+}
+
+/* ─── Ultima sync ────────────────────────────────────────────────────────── */
+.last-sync {
+    font-size: 11px;
+    color: #aaa;
+    text-align: center;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────────────── */
+.popup-footer {
+    background: #e9ecef;
+    padding: 7px 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+}
+
+.footer-link {
+    color: #1a3a5c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
+
+.footer-sep {
+    color: #ccc;
+}
+
+/* ─── Pannello impostazioni ──────────────────────────────────────────────── */
+.settings-panel {
+    background: #fff;
+    border-top: 1px solid #dee2e6;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.settings-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1a3a5c;
+    margin-bottom: 4px;
+}
+
+.settings-label {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 11px;
+    color: #666;
+    font-weight: 500;
+}
+
+.settings-input {
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: monospace;
+    width: 100%;
+}
+
+.settings-input:focus {
+    outline: none;
+    border-color: #1a3a5c;
+}
+
+/* ─── Utility ────────────────────────────────────────────────────────────── */
+.hidden {
+    display: none !important;
+}

@@ -1,23 +1,113 @@
 {
-    "manifest_version": 3,
-    "name": "Monitor PCT v2.4",
-    "version": "2.4.7",
-    "version_name": "2.4.7",
-    "description": "Cattura cookies SIGIT e sincronizza documenti su Aruba (sincronizzafascicolo.it)",
-    "permissions": ["cookies", "webNavigation", "declarativeNetRequest", "storage", "scripting"],
-    "host_permissions": [
-        "https://*.finanze.it/*",
-        "https://www.sincronizzafascicolo.it/*"
-    ],
-    "background": {
-        "service_worker": "background.js"
+  "manifest_version": 3,
+  "name": "PCT Monitor - PdA Toscana",
+  "version": "1.9.155",
+  "description": "PCT Monitor - PdA Toscana (sync Ordine via PdA). Monitora i fascicoli del Processo Civile Telematico sul Portale delle Aziende Toscana (PdA). Scrapa i dati e li sincronizza con il backend locale.",
+
+  "icons": {
+    "16":  "icon16.png",
+    "48":  "icon48.png",
+    "128": "icon128.png"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16":  "icon16.png",
+      "48":  "icon48.png",
+      "128": "icon128.png"
     },
-    "content_scripts": [
-        {
-            "matches": ["https://www.sincronizzafascicolo.it/wp-content/monitor/*", "https://www.sincronizzafascicolo.it/wp-admin/*"],
-            "js": ["content_aruba_tutti.js"],
-            "run_at": "document_end",
-            "all_frames": true
-        }
-    ]
+    "default_title": "PCT Monitor"
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/dettaglio-fascicolo/*",
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/elenco-comunicazioni*",
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/dashboard*",
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/agenda*",
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/esportazione-agenda*",
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/profile*",
+        "https://www.giustizia.toscana.it/pda-rt/cancelleriatelematica/advanced-search*"
+      ],
+      "js": ["pda_download.js", "content.js", "scraper_ordine.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "http://localhost/pct/*", "http://localhost/pct", "https://localhost/pct/*", "https://localhost/pct",
+        "http://desktop-peoancq/pct/*", "http://desktop-peoancq/pct", "https://desktop-peoancq/pct/*", "https://desktop-peoancq/pct"
+      ],
+      "js": ["dashboard_bridge.js"],
+      "run_at": "document_start",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://sincpdatoscana.it/wp-content/monitor/*",
+        "https://www.sincpdatoscana.it/wp-content/monitor/*"
+      ],
+      "js": ["dashboard_bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://servizipst.giustizia.it/PST/*"],
+      "js": ["scraper_ministero.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "offscreen",
+    "scripting",
+    "storage",
+    "tabs",
+    "webNavigation",
+    "cookies"
+  ],
+
+  "host_permissions": [
+    "https://www.giustizia.toscana.it/*",
+    "https://auth.regione.toscana.it/*",
+    "https://servizipst.giustizia.it/*",
+    "https://sincpdatoscana.it/*",
+    "https://www.sincpdatoscana.it/*",
+    "http://localhost/*",
+    "https://localhost/*",
+    "http://desktop-peoancq/*",
+    "https://desktop-peoancq/*"
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["interceptor.js", "icon16.png", "icon48.png", "icon128.png"],
+      "matches": ["https://www.giustizia.toscana.it/*"]
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+

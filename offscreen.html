@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>PCT Monitor — scarico documenti</title>
+</head>
+<body>
+<!--
+  Documento OFFSCREEN: non ha finestra, non ha scheda, non compare all'utente e
+  non viene rallentato da Chrome come una finestra ridotta a icona.
+  Ospita il motore di scarico (pda_download.js), che qui puo' girare perche':
+   - le chiamate al PdA partono dall'origine dell'estensione (host_permissions),
+   - DOMParser serve a leggere il DatiAtto ed esiste solo in un documento,
+   - i file continuano a essere salvati sul PC via AstarFirmaServer (background).
+-->
+<script src="pda_download.js"></script>
+<script src="offscreen_scarico.js"></script>
+</body>
+</html>
